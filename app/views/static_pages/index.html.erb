@@ -11,21 +11,16 @@
 </section>
 
 
-    <!-- <li>
-      <div class="view">
-        <input type="checkbox" class="toggle">
-        <label>Do laundry</label>
-      </div>
-    </li> -->
-
-
 <script>
   $(function() {
     $.get("/tasks").success(function(data) {
       var htmlString = "";
 
       $.each(data, function(index, task) {
-        var liElement = '<li><div class="view"><input class="toggle" type="checkbox"<label>' +
+        var checkedStatus = task.done ? "checked" : "";
+        var liElement = '<li><div class="view"><input class="toggle" type="checkbox"' +
+        checkedStatus +
+        '><label>' +
           task.title +
           '</label></div></li>';
         htmlString += liElement;
